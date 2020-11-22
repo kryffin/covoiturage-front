@@ -1,14 +1,14 @@
 export interface Ride {
   id?: string;
   driver: string;
-  clients: string[];
+  clients?: string[];
   start: Location;
   finish: Location;
   duration: number;
   price: number;
-  stops: Location[];
+  stops?: Location[];
   nbSeats: number;
-  date: number;
+  date: string;
 }
 
 export interface Location {

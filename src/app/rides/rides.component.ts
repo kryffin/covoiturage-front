@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../shared/services/user.service';
-import {User} from '../shared/interfaces/user';
 import {Ride} from '../shared/interfaces/ride';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import {mergeMap} from 'rxjs/operators';
 import {RideService} from '../shared/services/ride.service';
 
 @Component({
@@ -11,14 +12,37 @@ import {RideService} from '../shared/services/ride.service';
 })
 export class RidesComponent implements OnInit {
 
-  constructor(private _rideService: RideService) {
+  private _rides: Ride[];
+
+  constructor(private _router: Router, private _rideService: RideService) {
+    this._rides = [];
   }
 
   get rides(): Ride[] {
-    return this._rideService.fetch();
+    return this._rides;
   }
 
   ngOnInit(): void {
+    this._rideService
+      .fetch().subscribe((rides: Ride[]) => this._rides = rides);
+  }
+
+  delete(ride: Ride): void {
+    this._rideService
+      .delete(ride.id)
+      .subscribe(_ => this._rides = this._rides.filter(__ => __.id !== _));
+  }
+
+  navigate(id: string): void {
+    this._router.navigate([ '/ride', id ]);
+  }
+
+  private _add(ride: Ride): Observable<Ride[]> {
+    return this._rideService
+      .create(ride)
+      .pipe(
+        mergeMap(_ => this._rideService.fetch())
+      );
   }
 
 }

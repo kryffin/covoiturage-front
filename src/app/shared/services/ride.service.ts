@@ -2,51 +2,34 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import { User } from '../interfaces/user';
-import { RIDES } from '../../_static/rides';
 import { Ride } from '../interfaces/ride';
+import {defaultIfEmpty, filter, map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RideService {
-  // private property to store all backend URLs
   private readonly _backendURL: any;
-  // private property to store default person
   private readonly _defaultRide: Ride;
 
-  private _rides: Ride[];
-
   constructor(private _http: HttpClient) {
-    this._rides = RIDES;
 
     this._defaultRide = {
-      id: 'id',
-      driver: 'driver',
-      clients: [
-        'client1'
-      ],
+      driver: '5fb86395eecced2dd69c382e',
       start: {
-        street: 'start',
-        postalCode: '000',
-        city: '---'
-      },
-      finish: {
-        street: 'finish',
+        street: 'rue de Stanislas',
         postalCode: '54000',
         city: 'Nancy'
       },
-      duration: 0.0,
-      price: 0.0,
-      stops: [
-        {
-          street: 'stop1',
-          postalCode: '000',
-          city: '---'
-        }
-      ],
-      nbSeats: 0,
-      date: 0
+      finish: {
+        street: 'rue de la Gare',
+        postalCode: '54000',
+        city: 'Nancy'
+      },
+      duration: 4,
+      price: 15.99,
+      nbSeats: 4,
+      date: '1991-09-19 22:00:00.000Z'
     };
     this._backendURL = {};
 
@@ -60,51 +43,37 @@ export class RideService {
     Object.keys(environment.backend.endpoints).forEach(k => this._backendURL[ k ] = `${baseUrl}${environment.backend.endpoints[ k ]}`);
   }
 
-  /**
-   * Returns private property _defaultPerson
-   */
-  get defaultPerson(): Ride {
+  get defaultRide(): Ride {
     return this._defaultRide;
   }
 
-  /**
-   * Function to return list of person
-   */
-  fetch(): Ride[] {
-    return this._rides;
+  fetch(): Observable<Ride[]> {
+    return this._http.get<Ride[]>(this._backendURL.allRides)
+      .pipe(
+        filter(_ => !!_),
+        defaultIfEmpty([])
+      );
   }
 
-  /**
-   * Function to return one person for current id
-   */
-  fetchOne(id: string): Ride {
-    return this._rides.find(x => x.id == id);
+  fetchOne(id: string): Observable<Ride> {
+    return this._http.get<Ride>(this._backendURL.oneRide.replace(':id', id));
   }
 
-  /**
-   * Function to create a new person
-   */
-  create(person: User): Observable<any> {
-    return this._http.post<User>(this._backendURL.allPeople, person, this._options());
+  create(ride: Ride): Observable<any> {
+    return this._http.post<Ride>(this._backendURL.allRides, ride, this._options());
   }
 
-  /**
-   * Function to update one person
-   */
-  update(id: string, person: User): Observable<any> {
-    return this._http.put<User>(this._backendURL.onePeople.replace(':id', id), person, this._options());
+  update(id: string, ride: Ride): Observable<any> {
+    return this._http.put<Ride>(this._backendURL.oneRide.replace(':id', id), ride, this._options());
   }
 
-  /**
-   * Function to delete one person for current id
-   */
-  delete(id: string): void {
-    this._rides = this._rides.filter(ride => ride.id !== id);
+  delete(id: string): Observable<string> {
+    return this._http.delete(this._backendURL.oneRide.replace(':id', id))
+      .pipe(
+        map(_ => id)
+      );
   }
 
-  /**
-   * Function to return request options
-   */
   private _options(headerList: object = {}): any {
     return { headers: new HttpHeaders(Object.assign({ 'Content-Type': 'application/json' }, headerList)) };
   }

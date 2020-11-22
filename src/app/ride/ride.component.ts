@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Ride} from '../shared/interfaces/ride';
-import {UserService} from '../shared/services/user.service';
 import {ActivatedRoute} from '@angular/router';
+import {merge} from 'rxjs';
+import {filter, mergeMap} from 'rxjs/operators';
+import {Ride} from '../shared/interfaces/ride';
 import {RideService} from '../shared/services/ride.service';
 
 @Component({
@@ -11,7 +12,7 @@ import {RideService} from '../shared/services/ride.service';
 })
 export class RideComponent implements OnInit {
 
-  private _ride: any;
+  private _ride: Ride;
 
   constructor(private _rideService: RideService, private _route: ActivatedRoute) {
     this._ride = {} as Ride;
@@ -26,7 +27,19 @@ export class RideComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._ride = this._rideService.fetchOne(this._route.snapshot.params['id']);
+    merge(
+      this._route.params.pipe(
+        filter(params => !!params.id),
+        mergeMap(params => this._rideService.fetchOne(params.id))
+      )
+    )
+      .subscribe(
+        (ride: any) => this._ride = ride,
+        () => {
+          // manage error when user doesn't exist in DB
+          this._ride = this._rideService.defaultRide;
+        }
+      );
   }
 
 }
