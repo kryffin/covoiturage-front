@@ -19,8 +19,9 @@ export class UserService {
       lastname: 'lastname',
       photo: 'https://randomuser.me/api/portraits/lego/6.jpg',
       age: 0,
-      email: 'email@ema.il',
+      mail: 'email@ema.il',
       phone: '+33700000000',
+      fullName: 'firstname lastname'
     };
     this._backendURL = {};
 

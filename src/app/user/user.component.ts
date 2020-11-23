@@ -22,6 +22,10 @@ export class UserComponent implements OnInit {
     return this._user;
   }
 
+  get userPhoto(): string {
+    return this._user.photo == null ? "https://randomuser.me/api/portraits/lego/6.jpg" : this._user.photo;
+  }
+
   delete(id: string): void {
     this._userService.delete(id);
   }

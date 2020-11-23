@@ -11,6 +11,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule} from '@angular/material/tabs';
 import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule} from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 import {AppRoutingModule} from './app-routing.module';
 import {UserComponent} from './user/user.component';
 import { UsersComponent } from './users/users.component';
@@ -21,10 +24,15 @@ import { LocationComponent } from './location/location.component';
 import { RidesComponent } from './rides/rides.component';
 import {RideService} from './shared/services/ride.service';
 import {UserService} from './shared/services/user.service';
+import { FormComponent } from './shared/form/form.component';
+import { DialogComponent } from './shared/dialog/dialog.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {ReactiveFormsModule} from '@angular/forms';
+import { UpdateUserComponent } from './update/update-user.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, UserComponent, UsersComponent, UserCardComponent, RideCardComponent, RideComponent, LocationComponent, RidesComponent],
+  declarations: [AppComponent, HomeComponent, UserComponent, UsersComponent, UserCardComponent, RideCardComponent, RideComponent, LocationComponent, RidesComponent, FormComponent, DialogComponent, UpdateUserComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -36,7 +44,12 @@ import {UserService} from './shared/services/user.service';
     MatIconModule,
     AppRoutingModule,
     MatTabsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTableModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
   ],
   providers: [ RideService, UserService],
   bootstrap: [ AppComponent ]

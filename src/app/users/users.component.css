@@ -11,3 +11,32 @@
   font-weight: bold;
   text-align: center;
 }
+
+.mat-cell:nth-child(5),
+.mat-header-cell:nth-child(5) {
+  width: 10%;
+}
+
+.mat-cell:nth-child(6),
+.mat-header-cell:nth-child(6) {
+  width: 40px;
+}
+
+.cell-right {
+  text-align: right;
+}
+
+.add-button {
+  text-align: center;
+  padding-top: 2em;
+}
+
+img {
+  width: 30px;
+  height: auto;
+  border-radius: 50%;
+}
+
+table {
+  width: 100%;
+}

@@ -1,6 +1,39 @@
-<p class="title">Liste des utilisateurs</p>
-<mat-paginator [length]="users.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
-<mat-list>
-  <app-user-card [user]="user" *ngFor="let user of users"></app-user-card>
-</mat-list>
+<table mat-table [dataSource]="users">
 
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let user"> {{users.indexOf(user)+1}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="photo">
+    <th mat-header-cell *matHeaderCellDef> Photo </th>
+    <td mat-cell *matCellDef="let user"> <img class="rounded" sizes="50;50" [src]="userPhoto(users.indexOf(user))" alt="photo"/> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="nom">
+    <th mat-header-cell *matHeaderCellDef> Nom </th>
+    <td mat-cell *matCellDef="let user"> {{user.fullName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="age">
+    <th mat-header-cell *matHeaderCellDef> Age </th>
+    <td mat-cell *matCellDef="let user"> {{user.age}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="modifier">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td class="cell-right" mat-cell *matCellDef="let user"> <button mat-icon-button [routerLink]="['/edituser', user.id]"><mat-icon>edit</mat-icon></button> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="supprimer">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td class="cell-right" mat-cell *matCellDef="let user"> <button mat-icon-button (click)="delete(user)"><mat-icon>delete</mat-icon></button> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<div class="add-button">
+  <button mat-stroked-button color="primary" (click)="openDialog()"> Ajouter un utilisateur </button>
+</div>
