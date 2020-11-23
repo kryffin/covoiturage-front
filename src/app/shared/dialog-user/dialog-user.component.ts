@@ -4,12 +4,12 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.css']
+  templateUrl: './dialog-user.component.html',
+  styleUrls: ['./dialog-user.component.css']
 })
-export class DialogComponent implements OnInit {
+export class DialogUserComponent implements OnInit {
 
-  constructor(private _dialogRef: MatDialogRef<DialogComponent>, @Optional() @Inject(MAT_DIALOG_DATA) private _user: User) {
+  constructor(private _dialogRef: MatDialogRef<DialogUserComponent>, @Optional() @Inject(MAT_DIALOG_DATA) private _user: User) {
   }
 
   get user(): User {

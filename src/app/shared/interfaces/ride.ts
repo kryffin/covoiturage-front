@@ -15,4 +15,5 @@ export interface Location {
   street: string;
   postalCode: string;
   city: string;
+  fullAddress: string;
 }

@@ -4,6 +4,8 @@ import {merge} from 'rxjs';
 import {filter, mergeMap} from 'rxjs/operators';
 import {Location, Ride} from '../shared/interfaces/ride';
 import {RideService} from '../shared/services/ride.service';
+import {UserService} from '../shared/services/user.service';
+import {User} from '../shared/interfaces/user';
 
 @Component({
   selector: 'app-ride',
@@ -14,7 +16,7 @@ export class RideComponent implements OnInit {
 
   private _ride: Ride;
 
-  constructor(private _rideService: RideService, private _route: ActivatedRoute) {
+  constructor(private _rideService: RideService, private _userService: UserService, private _route: ActivatedRoute) {
     this._ride = {} as Ride;
   }
 

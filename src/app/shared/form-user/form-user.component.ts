@@ -5,10 +5,10 @@ import {CustomValidators} from './custom-validators';
 
 @Component({
   selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  templateUrl: './form-user.component.html',
+  styleUrls: ['./form-user.component.css']
 })
-export class FormComponent implements OnInit, OnChanges {
+export class FormUserComponent implements OnInit, OnChanges {
 
   private _isUpdateMode: boolean;
   private _model: User;

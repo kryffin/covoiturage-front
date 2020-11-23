@@ -24,15 +24,16 @@ import { LocationComponent } from './location/location.component';
 import { RidesComponent } from './rides/rides.component';
 import {RideService} from './shared/services/ride.service';
 import {UserService} from './shared/services/user.service';
-import { FormComponent } from './shared/form/form.component';
-import { DialogComponent } from './shared/dialog/dialog.component';
+import { FormUserComponent } from './shared/form-user/form-user.component';
+import { DialogUserComponent } from './shared/dialog-user/dialog-user.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
-import { UpdateUserComponent } from './update/update-user.component';
-
+import { UpdateUserComponent } from './update-user/update-user.component';
+import {UpdateRideComponent} from './update-ride/update-ride.component';
+import { DialogRideComponent } from './shared/dialog-ride/dialog-ride.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, UserComponent, UsersComponent, UserCardComponent, RideCardComponent, RideComponent, LocationComponent, RidesComponent, FormComponent, DialogComponent, UpdateUserComponent],
+  declarations: [AppComponent, HomeComponent, UserComponent, UsersComponent, UserCardComponent, RideCardComponent, RideComponent, LocationComponent, RidesComponent, FormUserComponent, DialogUserComponent, UpdateUserComponent, UpdateRideComponent, DialogRideComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

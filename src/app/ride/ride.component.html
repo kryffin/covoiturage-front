@@ -1,11 +1,9 @@
-<mat-card>
-  <mat-card-title>{{adressDisplay(ride.start)}} <mat-icon>arrow_forward</mat-icon> {{adressDisplay(ride.finish)}}</mat-card-title>
-  <mat-card-subtitle>Chauffeur : {{ride.driver}} €</mat-card-subtitle>
-  <mat-card-subtitle>Arrêt :</mat-card-subtitle>
-  <mat-card-subtitle *ngFor="let stop of ride.stops">{{adressDisplay(stop)}}</mat-card-subtitle>
-  <mat-card-subtitle>Clients :</mat-card-subtitle>
-  <mat-card-subtitle *ngFor="let client of ride.clients">{{client}}</mat-card-subtitle>
-  <mat-card-subtitle>Prix : {{ride.price}} €</mat-card-subtitle>
-  <mat-card-subtitle>Durée : {{ride.duration}} heure(s)</mat-card-subtitle>
-  <mat-card-subtitle>Prix : {{ride.price}} €</mat-card-subtitle>
-</mat-card>
+<div class="drive-card">
+  <mat-card>
+    <mat-card-title>{{adressDisplay(ride.start)}} <mat-icon>arrow_forward</mat-icon> {{adressDisplay(ride.finish)}}</mat-card-title>
+    <mat-card-subtitle *ngFor="let stop of ride.stops"> Arrêt n° {{ride.stops.indexOf(stop)+1}} : {{adressDisplay(stop)}} </mat-card-subtitle>
+    <mat-card-subtitle> Prix : {{ride.price}} € </mat-card-subtitle>
+    <mat-card-subtitle> Durée : {{ride.duration}} heure(s) </mat-card-subtitle>
+    <mat-card-subtitle> Nombre de places : {{ride.nbSeats}} </mat-card-subtitle>
+  </mat-card>
+</div>

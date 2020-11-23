@@ -21,7 +21,7 @@ mat-list-item {
   color: rgba(0,0,0,0.87);
   background-color: white;
   margin: 10px;
-  width: 360px;
+  width: 75%;
 }
 
 mat-card:hover {
@@ -38,13 +38,18 @@ mat-list-item {
 }
 
 mat-card-title {
-  margin-bottom: 0;
+  margin-bottom: 2em;
+  text-align: center;
 }
 
 mat-card-title span {
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;
+}
+
+mat-card-subtitle {
+  padding-top: 1em;
 }
 
 mat-card-subtitle.contact-info {
@@ -148,4 +153,11 @@ img {
   img {
     margin-right: 5px;
   }
+}
+
+.user-card {
+  padding-top: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

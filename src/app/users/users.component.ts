@@ -5,7 +5,7 @@ import {filter, map, mergeMap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {UserService} from '../shared/services/user.service';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {DialogComponent} from '../shared/dialog/dialog.component';
+import {DialogUserComponent} from '../shared/dialog-user/dialog-user.component';
 
 @Component({
   selector: 'app-users',
@@ -15,9 +15,9 @@ import {DialogComponent} from '../shared/dialog/dialog.component';
 export class UsersComponent implements OnInit {
 
   private _users: User[];
-  private _userDialog: MatDialogRef<DialogComponent>;
+  private _userDialog: MatDialogRef<DialogUserComponent>;
   private _dialogStatus: string;
-  displayedColumns: string[] = ['position', 'photo', 'nom', 'age', 'modifier', 'supprimer'];
+  displayedColumns: string[] = ['position', 'photo', 'nom', 'age', 'details', 'modifier', 'supprimer'];
 
   constructor(private _router: Router, private _userService: UserService, private _dialog: MatDialog) {
     this._users = [];
@@ -40,7 +40,7 @@ export class UsersComponent implements OnInit {
   openDialog(): void {
     this._dialogStatus = 'active';
 
-    this._userDialog = this._dialog.open(DialogComponent, {
+    this._userDialog = this._dialog.open(DialogUserComponent, {
       width: 'auto',
       disableClose: true
     });
