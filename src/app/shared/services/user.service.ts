@@ -59,7 +59,7 @@ export class UserService {
   }
 
   delete(id: string): Observable<string> {
-    return this._http.delete(this._backendURL.oneUser.replace(':id', id))
+    return this._http.delete(this._backendURL.oneUser.replace(':id', id), this._options())
       .pipe(
         map(_ => id)
       );

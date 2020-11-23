@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Ride} from '../interfaces/ride';
+import {Location, Ride} from '../interfaces/ride';
 import {Router} from '@angular/router';
 
 @Component({
@@ -17,6 +17,10 @@ export class RideCardComponent implements OnInit {
 
   get ride(): Ride {
     return this._ride;
+  }
+
+  adressDisplay(adress: Location): string {
+    return adress.street + ", " + adress.postalCode + " " + adress.city;
   }
 
   @Input()

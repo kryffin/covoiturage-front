@@ -1,2 +1,5 @@
-<app-ride-card [ride]="ride" *ngFor="let ride of rides"></app-ride-card>
-
+<p class="title">Liste des trajets</p>
+<mat-paginator [length]="rides.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+<mat-list>
+  <app-ride-card [ride]="ride" *ngFor="let ride of rides"></app-ride-card>
+</mat-list>

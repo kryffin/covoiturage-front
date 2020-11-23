@@ -21,6 +21,10 @@ export class UserCardComponent implements OnInit {
     return this._user;
   }
 
+  get userPhoto(): string {
+    return this._user.photo == null ? "https://randomuser.me/api/portraits/lego/6.jpg" : this._user.photo;
+  }
+
   @Input()
   set user(user: User) {
     this._user = user;

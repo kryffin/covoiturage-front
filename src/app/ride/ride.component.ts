@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {merge} from 'rxjs';
 import {filter, mergeMap} from 'rxjs/operators';
-import {Ride} from '../shared/interfaces/ride';
+import {Location, Ride} from '../shared/interfaces/ride';
 import {RideService} from '../shared/services/ride.service';
 
 @Component({
@@ -20,6 +20,10 @@ export class RideComponent implements OnInit {
 
   get ride(): Ride {
     return this._ride;
+  }
+
+  adressDisplay(adress: Location): string {
+    return adress.street + ", " + adress.postalCode + " " + adress.city;
   }
 
   delete(id: string): void {

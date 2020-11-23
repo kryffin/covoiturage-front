@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule} from '@angular/material/tabs';
+import { MatPaginatorModule} from '@angular/material/paginator';
 import {AppRoutingModule} from './app-routing.module';
 import {UserComponent} from './user/user.component';
 import { UsersComponent } from './users/users.component';
@@ -32,7 +34,9 @@ import {UserService} from './shared/services/user.service';
     MatButtonModule,
     MatListModule,
     MatIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTabsModule,
+    MatPaginatorModule
   ],
   providers: [ RideService, UserService],
   bootstrap: [ AppComponent ]

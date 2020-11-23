@@ -1,3 +1,11 @@
-<p>(Je suis une carte de trajet) Trajet de {{ride.start.city}} à {{ride.finish.city}}</p>
-<p>J'explique un peu plus qu'une simple carte de trajet !</p>
-<p (click)="delete(ride.id)">Supprime moi</p>
+<mat-card>
+  <mat-card-title>{{adressDisplay(ride.start)}} <mat-icon>arrow_forward</mat-icon> {{adressDisplay(ride.finish)}}</mat-card-title>
+  <mat-card-subtitle>Chauffeur : {{ride.driver}} €</mat-card-subtitle>
+  <mat-card-subtitle>Arrêt :</mat-card-subtitle>
+  <mat-card-subtitle *ngFor="let stop of ride.stops">{{adressDisplay(stop)}}</mat-card-subtitle>
+  <mat-card-subtitle>Clients :</mat-card-subtitle>
+  <mat-card-subtitle *ngFor="let client of ride.clients">{{client}}</mat-card-subtitle>
+  <mat-card-subtitle>Prix : {{ride.price}} €</mat-card-subtitle>
+  <mat-card-subtitle>Durée : {{ride.duration}} heure(s)</mat-card-subtitle>
+  <mat-card-subtitle>Prix : {{ride.price}} €</mat-card-subtitle>
+</mat-card>

@@ -1,2 +1,5 @@
-KKKKKKKK
-<p (click)="navigate(user.id)">(Je suis une carte d'utilisateur en liste) User: {{user.firstname}} {{user.lastname}}</p>
+<div class="card-div">
+  <mat-card (click)="navigate(user.id)">
+    <mat-card-title><img mat-card-avatar [src]="userPhoto" /> {{user.firstname}} {{user.lastname}}</mat-card-title>
+  </mat-card>
+</div>

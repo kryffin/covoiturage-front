@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Ride} from '../shared/interfaces/ride';
+import {Location, Ride} from '../shared/interfaces/ride';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {mergeMap} from 'rxjs/operators';
