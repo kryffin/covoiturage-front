@@ -2,8 +2,9 @@
   <mat-card>
     <mat-card-title> <img mat-card-avatar [src]="userPhoto"/> </mat-card-title>
     <mat-card-title> {{user.firstname}} {{user.lastname}} </mat-card-title>
-    <mat-card-subtitle> Age : {{user.age}} </mat-card-subtitle>
-    <mat-card-subtitle> Email : {{user.mail}} </mat-card-subtitle>
-    <mat-card-subtitle> Numéro : {{user.phone}} </mat-card-subtitle>
+    <mat-card-content> Age : {{user.age}} </mat-card-content>
+    <mat-card-content> Email : {{user.mail}} </mat-card-content>
+    <mat-card-content> Numéro : {{user.phone}} </mat-card-content>
+    <mat-card-actions><button mat-icon-button [routerLink]="['/edituser', user.id]"><mat-icon>edit</mat-icon></button></mat-card-actions>
   </mat-card>
 </div>

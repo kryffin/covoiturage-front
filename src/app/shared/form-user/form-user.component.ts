@@ -4,7 +4,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomValidators} from './custom-validators';
 
 @Component({
-  selector: 'app-form',
+  selector: 'app-form-user',
   templateUrl: './form-user.component.html',
   styleUrls: ['./form-user.component.css']
 })

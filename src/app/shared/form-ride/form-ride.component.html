@@ -1,0 +1,138 @@
+<h2 mat-dialog-title *ngIf="isUpdateMode">Mise à jour du trajet</h2>
+<h2 mat-dialog-title *ngIf="!isUpdateMode">Ajouter un trajet</h2>
+
+<mat-dialog-content>
+  <form novalidate [formGroup]="form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Chauffeur</mat-label>
+      <mat-select formControlName="driver" required>
+        <mat-option *ngFor="let user of users" [value]="user.id">
+          {{user.fullName}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('driver').dirty && form.get('driver').hasError('required')">
+        Un chauffeur est <strong>requis</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Client</mat-label>
+      <mat-select formControlName="client">
+        <mat-option *ngFor="let user of users" [value]="user.id">
+          {{user.fullName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div [formGroup]="formStart">
+      <mat-label> Départ : </mat-label>
+      <br/>
+      <mat-form-field [class.mgb15]="formStart.get('street').dirty && formStart.get('street').invalid" appearance="outline">
+        <mat-label>Rue</mat-label>
+        <input matInput placeholder="Rue" formControlName="street" minlength="2" required name="street" />
+        <mat-error *ngIf="formStart.get('street').dirty && formStart.get('street').hasError('required')">
+          La rue est <strong>requise</strong>
+        </mat-error>
+        <mat-error *ngIf="formStart.get('street').dirty && formStart.get('street').hasError('minlength')">
+          La rue doit être <strong>au minimum 2 caractères</strong>
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field [class.mgb15]="formStart.get('postalCode').dirty && formStart.get('postalCode').invalid" appearance="outline">
+        <mat-label>Code postal</mat-label>
+        <input matInput placeholder="Code postal" formControlName="postalCode" minlength="2" required name="postalCode" />
+        <mat-error *ngIf="formStart.get('postalCode').dirty && formStart.get('postalCode').hasError('required')">
+          Le code postal est <strong>requis</strong>
+        </mat-error>
+        <mat-error *ngIf="formStart.get('postalCode').dirty && formStart.get('postalCode').hasError('minlength')">
+          Le code postal doit être <strong>au minimum 2 caractères</strong>
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field [class.mgb15]="formStart.get('city').dirty && formStart.get('city').invalid" appearance="outline">
+        <mat-label>Ville</mat-label>
+        <input matInput placeholder="Ville" formControlName="city" minlength="2" required name="city" />
+        <mat-error *ngIf="formStart.get('city').dirty && formStart.get('city').hasError('required')">
+          La ville est <strong>requise</strong>
+        </mat-error>
+        <mat-error *ngIf="formStart.get('city').dirty && formStart.get('city').hasError('minlength')">
+          La ville doit être <strong>au minimum 2 caractères</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <br/>
+
+    <div [formGroup]="formFinish">
+      <mat-label> Arrivée : </mat-label>
+      <br/>
+      <mat-form-field [class.mgb15]="formFinish.get('street').dirty && formFinish.get('street').invalid" appearance="outline">
+        <mat-label>Rue</mat-label>
+        <input matInput placeholder="Rue" formControlName="street" minlength="2" required name="street" />
+        <mat-error *ngIf="formFinish.get('street').dirty && formFinish.get('street').hasError('required')">
+          La rue est <strong>requise</strong>
+        </mat-error>
+        <mat-error *ngIf="formFinish.get('street').dirty && formFinish.get('street').hasError('minlength')">
+          La rue doit être <strong>au minimum 2 caractères</strong>
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field [class.mgb15]="formFinish.get('postalCode').dirty && formFinish.get('postalCode').invalid" appearance="outline">
+        <mat-label>Code postal</mat-label>
+        <input matInput placeholder="Code postal" formControlName="postalCode" minlength="2" required name="postalCode" />
+        <mat-error *ngIf="formFinish.get('postalCode').dirty && formFinish.get('postalCode').hasError('required')">
+          Le code postal est <strong>requis</strong>
+        </mat-error>
+        <mat-error *ngIf="formFinish.get('postalCode').dirty && formFinish.get('postalCode').hasError('minlength')">
+          Le code postal doit être <strong>au minimum 2 caractères</strong>
+        </mat-error>
+      </mat-form-field>
+      <br/>
+      <mat-form-field [class.mgb15]="formFinish.get('city').dirty && formFinish.get('city').invalid" appearance="outline">
+        <mat-label>Ville</mat-label>
+        <input matInput placeholder="Ville" formControlName="city" minlength="2" required name="city" />
+        <mat-error *ngIf="formFinish.get('city').dirty && formFinish.get('city').hasError('required')">
+          La ville est <strong>requise</strong>
+        </mat-error>
+        <mat-error *ngIf="formFinish.get('city').dirty && formFinish.get('city').hasError('minlength')">
+          La ville doit être <strong>au minimum 2 caractères</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <br/>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Durée</mat-label>
+      <input matInput type="number" formControlName="duration" min="0" required name="duration" />
+      <mat-error *ngIf="form.get('duration').dirty && form.get('duration').hasError('required')">
+        La durée est <strong>requise</strong>
+      </mat-error>
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Prix</mat-label>
+      <input matInput type="number" formControlName="price" min="0" required name="price" />
+      <mat-error *ngIf="form.get('price').dirty && form.get('price').hasError('required')">
+        Le prix est <strong>requis</strong>
+      </mat-error>
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field [class.mgb15]="form.get('date').dirty && form.get('date').invalid" appearance="outline">
+      <input matInput placeholder="Date" formControlName="date" minlength="2" required name="date" />
+      <mat-error *ngIf="form.get('date').dirty && form.get('date').hasError('required')">
+        La date est <strong>requise</strong>
+      </mat-error>
+      <mat-error *ngIf="form.get('date').dirty && form.get('date').hasError('required') && form.get('date').hasError('date')">
+        La date doit être au format <strong>MM/dd/YYYY</strong>
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" (click)="cancel()">Cancel</button>
+  <button mat-button color="primary" type="submit" (click)="submit(form.value)" [disabled]="form.invalid">Save</button>
+</mat-dialog-actions>

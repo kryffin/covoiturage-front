@@ -20,17 +20,14 @@ export class RideService {
         street: 'rue de Stanislas',
         postalCode: '54000',
         city: 'Nancy',
-        fullAddress: 'rue de Stanislas, 54000 Nancy'
       },
       finish: {
         street: 'rue de la Gare',
         postalCode: '54000',
         city: 'Nancy',
-        fullAddress: 'rue de la Gare, 54000 Nancy'
       },
       duration: 4,
       price: 15.99,
-      nbSeats: 4,
       date: '1991-09-19 22:00:00.000Z'
     };
     this._backendURL = {};

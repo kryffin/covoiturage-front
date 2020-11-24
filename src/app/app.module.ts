@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,8 +17,6 @@ import { MatInputModule } from '@angular/material/input';
 import {AppRoutingModule} from './app-routing.module';
 import {UserComponent} from './user/user.component';
 import { UsersComponent } from './users/users.component';
-import { UserCardComponent } from './shared/user-card/user-card.component';
-import { RideCardComponent } from './shared/ride-card/ride-card.component';
 import { RideComponent } from './ride/ride.component';
 import { LocationComponent } from './location/location.component';
 import { RidesComponent } from './rides/rides.component';
@@ -31,9 +29,16 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import {UpdateRideComponent} from './update-ride/update-ride.component';
 import { DialogRideComponent } from './shared/dialog-ride/dialog-ride.component';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { FormRideComponent } from './shared/form-ride/form-ride.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
+
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, UserComponent, UsersComponent, UserCardComponent, RideCardComponent, RideComponent, LocationComponent, RidesComponent, FormUserComponent, DialogUserComponent, UpdateUserComponent, UpdateRideComponent, DialogRideComponent],
+  declarations: [AppComponent, HomeComponent, UserComponent, UsersComponent, RideComponent, LocationComponent, RidesComponent, FormUserComponent, DialogUserComponent, UpdateUserComponent, UpdateRideComponent, DialogRideComponent, FormRideComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -51,8 +56,10 @@ import { DialogRideComponent } from './shared/dialog-ride/dialog-ride.component'
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatSelectModule,
   ],
-  providers: [ RideService, UserService],
+  providers: [ RideService, UserService, {provide: LOCALE_ID, useValue: 'fr-FR'}],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {merge} from 'rxjs';
 import {filter, mergeMap} from 'rxjs/operators';
 import {Location, Ride} from '../shared/interfaces/ride';
 import {RideService} from '../shared/services/ride.service';
-import {UserService} from '../shared/services/user.service';
 import {User} from '../shared/interfaces/user';
 
 @Component({
@@ -15,28 +14,31 @@ import {User} from '../shared/interfaces/user';
 export class RideComponent implements OnInit {
 
   private _ride: Ride;
+  private _driver: User;
 
-  constructor(private _rideService: RideService, private _userService: UserService, private _route: ActivatedRoute) {
+  constructor(private _rideService: RideService, private _route: ActivatedRoute, private _router: Router) {
     this._ride = {} as Ride;
+    this._ride.start = {} as Location;
+    this._ride.finish = {} as Location;
   }
 
   get ride(): Ride {
     return this._ride;
   }
 
-  adressDisplay(adress: Location): string {
-    return adress.street + ", " + adress.postalCode + " " + adress.city;
+  get driver(): User {
+    return this._driver;
   }
 
-  delete(id: string): void {
-    this._rideService.delete(id);
+  addressDisplay(address: Location): string {
+    return address.street + ", " + address.postalCode + " " + address.city;
   }
 
   ngOnInit(): void {
     merge(
       this._route.params.pipe(
         filter(params => !!params.id),
-        mergeMap(params => this._rideService.fetchOne(params.id))
+        mergeMap(params => this._rideService.fetchOne(params.id)),
       )
     )
       .subscribe(

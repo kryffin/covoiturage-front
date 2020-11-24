@@ -42,13 +42,17 @@ mat-card-title {
   text-align: center;
 }
 
+mat-card-actions {
+  text-align: right;
+}
+
 mat-card-title span {
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;
 }
 
-mat-card-subtitle {
+mat-card-content {
   padding-top: 1em;
 }
 

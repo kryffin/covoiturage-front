@@ -50,8 +50,8 @@ export class UpdateRideComponent implements OnInit {
       )
       .subscribe(
         () => undefined,
-        () => this._router.navigate([ '/drives' ]),
-        () => this._router.navigate([ '/dives' ])
+        () => this._router.navigate([ '/rides' ]),
+        () => this._router.navigate([ '/rides' ])
       );
   }
 }
