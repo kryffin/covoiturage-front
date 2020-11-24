@@ -58,6 +58,10 @@ export class RideService {
     return this._http.get<Ride>(this._backendURL.oneRide.replace(':id', id));
   }
 
+  fetchBeginEnd(begin: string, end: string): Observable<Ride>{
+    return this._http.get<Ride>(this._backendURL.beginendride.replace({':start': begin}, {':end': end}));
+  }
+
   create(ride: Ride): Observable<any> {
     return this._http.post<Ride>(this._backendURL.allRides, ride, this._options());
   }

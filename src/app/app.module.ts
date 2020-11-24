@@ -25,7 +25,7 @@ import {UserService} from './shared/services/user.service';
 import { FormUserComponent } from './shared/form-user/form-user.component';
 import { DialogUserComponent } from './shared/dialog-user/dialog-user.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import {UpdateRideComponent} from './update-ride/update-ride.component';
 import { DialogRideComponent } from './shared/dialog-ride/dialog-ride.component';
@@ -58,6 +58,7 @@ registerLocaleData(localeFr, 'fr');
     MatInputModule,
     MatDatepickerModule,
     MatSelectModule,
+    FormsModule,
   ],
   providers: [ RideService, UserService, {provide: LOCALE_ID, useValue: 'fr-FR'}],
   bootstrap: [ AppComponent ]

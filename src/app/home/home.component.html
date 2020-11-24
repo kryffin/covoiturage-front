@@ -1,2 +1,21 @@
-<p class="title">Bienvenue sur notre site de covoiturage !</p>
-<p class="subtitle">A bat les bouchons !</p>
+<div class="container">
+  <p class="title">Bienvenue sur notre site de covoiturage !</p>
+  <p class="subtitle">A bat les bouchons !</p>
+  <mat-form-field class="depart" color="primary">
+    <mat-label>Départ</mat-label>
+    <input matInput type="text" [(ngModel)]="start">
+    <button mat-button *ngIf="start" matSuffix mat-icon-button aria-label="Clear" (click)="start=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field class="finish" color="primary">
+    <mat-label>Arrivée</mat-label>
+    <input matInput type="text" [(ngModel)]="end">
+    <button mat-button *ngIf="end" matSuffix mat-icon-button aria-label="Clear" (click)="end=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <button class="send" mat-icon-button aria-label="ChoosenTrajet" [routerLink]="['/ridingfromto', start, end]">
+    <mat-icon>room</mat-icon>
+  </button>
+</div>

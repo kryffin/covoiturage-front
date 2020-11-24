@@ -2,6 +2,14 @@
   flex: 1 1 auto;
 }
 
+.bar{
+  background: linear-gradient(to left, #827d98,#87bba0, #d3e3c0);
+}
+
+.title{
+  font-size: 14px;
+}
+
 * {
   font-family: Roboto, serif;
 }
