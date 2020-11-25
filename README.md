@@ -4,15 +4,14 @@ par Nicolas KLEINHENTZ et Yoann SIMON
 
 ## Installation de la partie front
 
-Ouvrir une fenêtre terminal
+Ouvrir une fenêtre de terminal.  
+Récupération du front-end du projet depuis git:  
+`$ git clone http://github.com/kryffin/Covoiturage-front.git`
 
-Récupération du projet front depuis git:
-- git clone http://github.com/kryffin/Covoiturage-front.git
+Se placer avec le terminal dans le dossier */covoiturage-front*
 
-Se placer avec le terminal dans le dossier /Covoiturage-front
+Installation des dépendances (yarn ou npm) :  
+`$ yarn install` ou `$ npm install`
 
-Installation des dépendances (yarn ou npm)
-- yarn install ou npm install
-
-Il ne reste plus qu'a lancer le front avec la commande:
-- ng serve
+Il ne reste plus qu'à lancer le front avec la commande :  
+`$ ng serve`
