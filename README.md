@@ -8,7 +8,7 @@ Ouvrir une fenêtre de terminal.
 Récupération du front-end du projet depuis git :  
 `$ git clone https://github.com/kryffin/covoiturage-front.git`
 
-Se placer avec le terminal dans le dossier */covoiturage-front*
+Se placer avec le terminal dans le dossier *covoiturage-front/*
 
 Installation des dépendances (yarn ou npm) :  
 `$ yarn install` ou `$ npm install`
