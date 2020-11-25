@@ -9,6 +9,8 @@ Ouvrir une fenêtre terminal
 Récupération du projet front depuis git:
 - git clone http://github.com/kryffin/Covoiturage-front.git
 
+Se placer avec le terminal dans le dossier /Covoiturage-front
+
 Installation des dépendances (yarn ou npm)
 - yarn install ou npm install
 
