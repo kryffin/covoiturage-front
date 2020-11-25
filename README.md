@@ -1,4 +1,4 @@
-# Front-End pu projet du module Nouvelles Technologies du Web
+# Front-End du projet du module Nouvelles Technologies du Web
 
 par Nicolas KLEINHENTZ et Yoann SIMON
 
