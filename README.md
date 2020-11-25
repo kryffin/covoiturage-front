@@ -5,7 +5,7 @@ par Nicolas KLEINHENTZ et Yoann SIMON
 ## Installation de la partie front
 
 Ouvrir une fenêtre de terminal.  
-Récupération du front-end du projet depuis git:  
+Récupération du front-end du projet depuis git :  
 `$ git clone http://github.com/kryffin/Covoiturage-front.git`
 
 Se placer avec le terminal dans le dossier */covoiturage-front*
